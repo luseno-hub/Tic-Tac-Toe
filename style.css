@@ -1,0 +1,168 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  background-color: aliceblue;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  margin: 50px auto;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.square:hover {
+  background-color: rgb(219, 237, 253);
+}
+
+.gameOver .square:hover,
+.square.X:hover,
+.square.O:hover {
+  background-color: transparent;
+  cursor: default;
+}
+
+.square .outline {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.square .foreground {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.square.X .outline::before {
+  content: "";
+  background: black;
+  width: 12px;
+  height: 56px;
+  position: absolute;
+  transform: rotate(45deg);
+  z-index: 2;
+}
+
+.square.X .outline::after {
+  content: "";
+  background: black;
+  width: 12px;
+  height: 56px;
+  position: absolute;
+  transform: rotate(-45deg);
+  z-index: 2;
+}
+
+.square.X .foreground::before {
+  content: "";
+  background: bisque;
+  width: 8px;
+  height: 52px;
+  position: absolute;
+  transform: rotate(45deg);
+  z-index: 3;
+}
+
+.square.X .foreground::after {
+  content: "";
+  background: bisque;
+  width: 8px;
+  height: 52px;
+  position: absolute;
+  transform: rotate(-45deg);
+  z-index: 3;
+}
+
+.square.O .outline::before {
+  content: "";
+  background: transparent;
+  width: 56px;
+  height: 56px;
+  position: absolute;
+  border-radius: 50%;
+  border: 12px solid black;
+  z-index: 2;
+}
+
+.square.O .foreground::after {
+  content: "";
+  background: transparent;
+  width: 52px;
+  height: 52px;
+  position: absolute;
+  border-radius: 50%;
+  border: 8px solid aquamarine;
+  z-index: 3;
+}
+
+.square:nth-of-type(1),
+.square:nth-of-type(2),
+.square:nth-of-type(3) {
+  border-top: none;
+}
+
+.square:nth-of-type(1),
+.square:nth-of-type(4),
+.square:nth-of-type(7) {
+  border-left: none;
+}
+
+.square:nth-of-type(3),
+.square:nth-of-type(6),
+.square:nth-of-type(9) {
+  border-right: none;
+}
+
+.square:nth-of-type(7),
+.square:nth-of-type(8),
+.square:nth-of-type(9) {
+  border-bottom: none;
+}
+
+button {
+  background-color: bisque;
+  color: black;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: black;
+  color: aliceblue;
+  transform: translateY(-5px);
+}
